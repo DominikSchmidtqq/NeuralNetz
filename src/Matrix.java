@@ -11,12 +11,32 @@ public class Matrix {
         }
     }
 
+
+
+    public static Matrix toObject(double[] array) {
+        Matrix m = new Matrix(array.length, 1);
+        for (int i = 0; i < array.length; i++) {
+            m.Matrix[i][0] = array[i];
+        }
+        return m;
+    }
+    public void setValueAtIndex(int row, int column, double val) {
+        this.Matrix[row][column] = val;
+    }
     public int getRows() {
         return this.rows;
     }
 
     public int getColumns() {
         return this.getColumns();
+    }
+
+    public void randomize() {
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
+                this.Matrix[i][j] = Math.floor(Math.random()* 2 -1);
+            }
+        }
     }
 
     public double getValueAtIndex(int row, int column) {
