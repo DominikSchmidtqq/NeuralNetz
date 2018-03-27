@@ -7,11 +7,11 @@ public class NeuralNetwork {
     private Matrix biasHidden;
     private Matrix biasOutput;
     public NeuralNetwork(int numberOfInputs, int numberOfHidden, int numberOfOutput) {
-        this. inputNodes = numberOfInputs;
+        this.inputNodes = numberOfInputs;
         this.hiddenNodes = numberOfHidden;
         this.outputNodes = numberOfOutput;
 
-        this.weightsInputHidden = new Matrix(this.hiddenNodes, this.inputNodes);
+        this.weightsInputHidden = new Matrix(2, 2);
         this.weightsHiddenOutput = new Matrix(this.outputNodes, this.hiddenNodes);
         this.biasHidden = new Matrix(this.hiddenNodes, 1);
         this.biasOutput = new Matrix(this.outputNodes, 1);
@@ -44,9 +44,12 @@ public class NeuralNetwork {
         Matrix hidden = Matrix.multiplication(this.weightsInputHidden, inputs);
         hidden.Addition(this.biasHidden);
 
-        for (int i = 0; i < hidden.getRows(); i++) {
-            for (int j = 0; j < hidden.getRows(); j++) {
-                hidden.setValueAtIndex(i,j,sigmoid(hidden.getValueAtIndex(i,j)));
+        System.out.println(hidden.getColumns()+" "+hidden.getColumns());
+
+        for (int i = 0; i <= hidden.getRows(); i++) {
+            for (int j = 0; j <= hidden.getRows(); j++) {
+                System.out.println(i+ " "+j);
+                double val = hidden.getValueAtIndex(i,j);
             }
         }
 

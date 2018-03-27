@@ -1,12 +1,13 @@
 public class Matrix {
     private int rows, columns;
-    private double[][] Matrix;
+    private double[][] data;
     public Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                this.Matrix[i][j] = 0;
+        this.data = new double[this.rows][this.columns];
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                this.data[i][j] = 0;
             }
         }
     }
@@ -16,37 +17,37 @@ public class Matrix {
     public static Matrix toObject(double[] array) {
         Matrix m = new Matrix(array.length, 1);
         for (int i = 0; i < array.length; i++) {
-            m.Matrix[i][0] = array[i];
+            m.data[i][0] = array[i];
         }
         return m;
     }
     public void setValueAtIndex(int row, int column, double val) {
-        this.Matrix[row][column] = val;
+        this.data[row][column] = val;
     }
     public int getRows() {
         return this.rows;
     }
 
     public int getColumns() {
-        return this.getColumns();
+        return this.columns;
     }
 
     public void randomize() {
         for (int i = 0; i < this.getRows(); i++) {
             for (int j = 0; j < this.getColumns(); j++) {
-                this.Matrix[i][j] = Math.floor(Math.random()* 2 -1);
+                this.data[i][j] = Math.floor(Math.random()* 2 -1);
             }
         }
     }
 
     public double getValueAtIndex(int row, int column) {
-        return this.Matrix[row][column];
+        return this.data[row][column];
     }
 
     public void ScalarMultiplication(double Val) {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                this.Matrix[i][j] *= Val;
+                this.data[i][j] *= Val;
             }
         }
     }
@@ -54,7 +55,7 @@ public class Matrix {
     public void ScalarAddition(double Val) {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                this.Matrix[i][j] += Val;
+                this.data[i][j] += Val;
             }
         }
     }
@@ -63,7 +64,7 @@ public class Matrix {
         if ((m.getRows() == this.getRows() && (m.getColumns() == this.getColumns()))) {
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.columns; j++) {
-                    this.Matrix[i][j] += m.getValueAtIndex(i,j);
+                    this.data[i][j] += m.getValueAtIndex(i,j);
                 }
             }
         }
@@ -78,7 +79,7 @@ public class Matrix {
                     for (int k = 0; k < l.getColumns(); k++) {
                          sum += l.getValueAtIndex(i,k) * m.getValueAtIndex(k,j);
                     }
-                    result.Matrix[i][j] = sum;
+                    result.data[i][j] = sum;
                 }
             }
         }
@@ -89,7 +90,7 @@ public class Matrix {
         Matrix result = new Matrix(this.getRows(), this.getColumns());
         for (int i = 0; i < this.getRows(); i++) {
             for (int j = 0; j < this.getColumns(); j++) {
-                result.Matrix[j][i] = this.getValueAtIndex(i,j);
+                result.data[j][i] = this.getValueAtIndex(i,j);
             }
         }
         return result;
