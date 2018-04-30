@@ -5,6 +5,7 @@ public class Matrix {
         this.rows = rows;
         this.columns = columns;
         this.data = new double[this.rows][this.columns];
+
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 this.data[i][j] = 0;
@@ -21,9 +22,11 @@ public class Matrix {
         }
         return m;
     }
+
     public void setValueAtIndex(int row, int column, double val) {
         this.data[row][column] = val;
     }
+
     public int getRows() {
         return this.rows;
     }
